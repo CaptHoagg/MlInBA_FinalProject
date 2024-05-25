@@ -4,6 +4,7 @@ from Model.Base.BaseModel import BaseModel
 class AccountModel(BaseModel):
     def __init__(self, connector):
         table_name = "account"
+        print(connector)
         super().__init__(table_name, connector)
 
     def create_new_record(self, **data):

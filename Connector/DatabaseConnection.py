@@ -14,6 +14,7 @@ class DatabaseConnection:
         if cls._instance is None:
             cls._instance = super(DatabaseConnection, cls).__new__(cls)
             cls.server = server
+            cls.table_names = None
             cls.port = port
             cls.username = username
             cls.database = database

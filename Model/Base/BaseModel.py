@@ -14,16 +14,13 @@ from Utils.DataframeUtils import compare_dataframes
 
 class BaseModel(QAbstractTableModel):
     def __init__(self, table_name, connector):
-        if self.validate_table_name(table_name, connector):
-            self.table_name = table_name
-            self.connector = connector
-            self.dataframe = None
-            self.pk_column = self.find_pk_of_table(self.table_name, self.connector)
-            self.init_bridge()
-            super().__init__()
-        else:
-            raise InvalidTableNameError(f"Invalid table name: {table_name}")
-
+        self.table_name = table_name
+        self.connector = connector
+        self.dataframe = None
+        self.pk_column = self.find_pk_of_table(self.table_name, self.connector)
+        self.init_bridge()
+        super().__init__()
+        
     @staticmethod
     def validate_table_name(table_name, connector):
         if table_name not in connector.table_names:
